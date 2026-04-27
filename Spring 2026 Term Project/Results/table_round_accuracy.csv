@@ -1,0 +1,8 @@
+Round,Logistic Regression,Random Forest,XGBoost,Ensemble,n
+Play-In,0.75,0.5833,0.75,0.5833,12
+Round of 64,0.7708,0.8125,0.7917,0.7708,96
+Round of 32,0.7917,0.8125,0.8333,0.8542,48
+Sweet 16,0.5833,0.625,0.625,0.625,24
+Elite Eight,0.8333,0.6667,0.75,0.75,12
+Final Four,0.8333,0.8333,0.8333,0.8333,6
+Championship,0.6667,0.6667,0.6667,0.6667,3

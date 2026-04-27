@@ -1,0 +1,7 @@
+Rank,feature,lr_coef,rf_importance,xgb_importance,avg_importance
+1,delta_adjoe,1.5144,0.2825,0.2574,0.2782
+2,delta_adjde,1.4269,0.2647,0.2242,0.2556
+3,delta_sos,0.6866,0.2299,0.2034,0.189
+4,seed_gap,-1.0748,0.1559,0.1433,0.1695
+5,delta_win_pct_last10,0.3095,0.0401,0.0779,0.0594
+6,round,-0.1245,0.027,0.0938,0.0483

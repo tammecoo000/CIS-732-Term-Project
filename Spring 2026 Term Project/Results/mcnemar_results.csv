@@ -1,0 +1,7 @@
+model_a,model_b,b,c,chi2,p_value,reject_h0
+Logistic Regression,Random Forest,11,13,0.0417,0.8383,False
+Logistic Regression,XGBoost,8,12,0.45,0.5023,False
+Random Forest,XGBoost,3,5,0.125,0.7237,False
+Logistic Regression,Ensemble,7,8,0.0,1.0,False
+Random Forest,Ensemble,5,4,0.0,1.0,False
+XGBoost,Ensemble,6,3,0.4444,0.505,False

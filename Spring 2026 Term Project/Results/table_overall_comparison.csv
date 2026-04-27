@@ -1,0 +1,5 @@
+Model,Accuracy,Log Loss,AUC,McNemar p-value (vs Ensemble)
+Logistic Regression,0.7562,0.4937,0.8459,1.0
+Random Forest,0.7662,0.5004,0.847,1.0
+XGBoost,0.7761,0.485,0.8531,0.505
+Ensemble,0.7612,0.4806,0.8554,—
