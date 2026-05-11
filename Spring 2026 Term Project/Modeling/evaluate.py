@@ -16,8 +16,8 @@ round_names = {
 
 models = {
     "Logistic Regression": "lr_preds.csv",
-    "Random Forest":       "rf_preds.csv",
-    "XGBoost":             "xgb_preds.csv",
+    "Random Forest":"rf_preds.csv",
+    "XGBoost": "xgb_preds.csv",
 }
 
 # Load all prediction files
@@ -32,7 +32,7 @@ print(f"{'Model':<25} {'Accuracy':>10} {'Log Loss':>10} {'AUC':>10}")
 print("-" * 62)
 for name, df in preds.items():
     acc = accuracy_score(df["y_true"], df["y_pred"])
-    ll  = log_loss(df["y_true"], df["y_prob"])
+    ll = log_loss(df["y_true"], df["y_prob"])
     auc = roc_auc_score(df["y_true"], df["y_prob"])
     print(f"{name:<25} {acc:>10.4f} {ll:>10.4f} {auc:>10.4f}")
 print("=" * 62)

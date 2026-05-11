@@ -27,7 +27,7 @@ pipe = Pipeline([("scaler", StandardScaler()), ("lr", LogisticRegression(max_ite
 gs_lr = GridSearchCV(pipe, {"lr__C": [0.01, 0.1, 0.5, 1.0, 5.0, 10.0, 50.0]}, cv=cv_splits, scoring="neg_log_loss", n_jobs=-1, verbose=0)
 gs_lr.fit(X_train, y_train)
 lr_coefs = gs_lr.best_estimator_.named_steps["lr"].coef_[0]
-print(f"  Best C: {gs_lr.best_params_['lr__C']}")
+print(f"Best C: {gs_lr.best_params_['lr__C']}")
 
 # Random Forest
 print("Fitting Random Forest...")
@@ -37,7 +37,7 @@ gs_rf = GridSearchCV(
     cv=cv_splits, scoring="neg_log_loss", n_jobs=-1, verbose=0)
 gs_rf.fit(X_train, y_train)
 rf_imps = gs_rf.best_estimator_.feature_importances_
-print(f"  Best params: {gs_rf.best_params_}")
+print(f"Best params: {gs_rf.best_params_}")
 
 # XGBoost
 print("Fitting XGBoost...")
@@ -47,7 +47,7 @@ gs_xgb = GridSearchCV(
     cv=cv_splits, scoring="neg_log_loss", n_jobs=-1, verbose=0)
 gs_xgb.fit(X_train, y_train)
 xgb_imps = gs_xgb.best_estimator_.feature_importances_
-print(f"  Best params: {gs_xgb.best_params_}")
+print(f"Best params: {gs_xgb.best_params_}")
 
 # Normalize LR coefficients to [0,1] for avg_importance comparability
 lr_abs = np.abs(lr_coefs)

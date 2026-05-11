@@ -24,8 +24,8 @@ print(f"Train: {len(train_df)} games | Test: {len(test_df)} games")
 cv_splits = list(GroupKFold(n_splits=5).split(X_train, y_train, groups=seasons))
 
 param_grid = {
-    "n_estimators":      [100, 300, 500],
-    "max_depth":         [None, 5, 10],
+    "n_estimators": [100, 300, 500],
+    "max_depth": [None, 5, 10],
     "min_samples_split": [2, 5, 10],
 }
 gs = GridSearchCV(
@@ -43,17 +43,17 @@ print(f"\nBest params: {gs.best_params_}  |  CV log-loss: {-gs.best_score_:.4f}"
 y_pred = gs.predict(X_test)
 y_prob = gs.predict_proba(X_test)[:, 1]
 
-print("\n=== Random Forest (CV-tuned) ===")
+print("\n Random Forest (CV-tuned)")
 print(f"Accuracy : {accuracy_score(y_test, y_pred):.4f}")
 print(f"Log Loss : {log_loss(y_test, y_prob):.4f}")
-print(f"ROC-AUC  : {roc_auc_score(y_test, y_prob):.4f}")
+print(f"ROC-AUC : {roc_auc_score(y_test, y_prob):.4f}")
 print("\nConfusion matrix (rows=actual, cols=predicted):")
 print(confusion_matrix(y_test, y_pred))
 
 print("\nFeature importances:")
 importances = zip(features, gs.best_estimator_.feature_importances_)
 for feat, imp in sorted(importances, key=lambda x: -x[1]):
-    print(f"  {feat:35s} {imp:.4f}")
+    print(f"{feat:35s} {imp:.4f}")
 
 # Save predictions for evaluate.py
 preds = test_df[["season", "round"]].copy()

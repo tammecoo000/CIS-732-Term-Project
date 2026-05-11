@@ -31,7 +31,7 @@ win_pct_last10 = (
 
 win_pct_last10["win_pct_last10"] = win_pct_last10["win_pct_last10"].round(2)
 
-#  Verify 
+# Verify 
 print("win_pct_last10 shape:", win_pct_last10.shape)
 print("\nwin_pct_last10 range:", win_pct_last10["win_pct_last10"].min(), "to", win_pct_last10["win_pct_last10"].max())
 print("\nNull values:", win_pct_last10["win_pct_last10"].isna().sum())

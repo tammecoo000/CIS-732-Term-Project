@@ -25,7 +25,7 @@ round_names = {
     3: "Sweet 16", 4: "Elite Eight", 5: "Final Four", 6: "Championship",
 }
 
-# --- 5a: Overall comparison table ---
+# Overall comparison table
 rows = []
 for name, df in all_models.items():
     acc = accuracy_score(df["y_true"], df["y_pred"])
@@ -43,7 +43,7 @@ overall.to_csv(os.path.join(results_dir, "table_overall_comparison.csv"), index=
 print("Overall Comparison:")
 print(overall.to_string(index=False))
 
-# --- 5b: Round-by-round accuracy ---
+# Round-by-round accuracy
 rounds = sorted(lr["round"].unique())
 round_rows = []
 for r in rounds:
@@ -59,7 +59,7 @@ round_df.to_csv(os.path.join(results_dir, "table_round_accuracy.csv"), index=Fal
 print("\nRound-by-Round Accuracy:")
 print(round_df.to_string(index=False))
 
-# --- 5c: Season-by-season accuracy ---
+# Season-by-season accuracy 
 seasons = sorted(lr["season"].unique())
 season_rows = []
 for s in seasons:
@@ -75,14 +75,14 @@ season_df.to_csv(os.path.join(results_dir, "table_season_accuracy.csv"), index=F
 print("\nSeason-by-Season Accuracy:")
 print(season_df.to_string(index=False))
 
-# --- 5d: Feature importance table ---
+# Feature importance table 
 feat_out = feat_imp.copy()
 feat_out.insert(0, "Rank", range(1, len(feat_out) + 1))
 feat_out.to_csv(os.path.join(results_dir, "table_feature_importance.csv"), index=False)
 print("\nFeature Importance:")
 print(feat_out.to_string(index=False))
 
-# --- 5e: Verify calibration figure ---
+# Verify calibration figure 
 cal_path = os.path.join(results_dir, "fig_calibration.png")
 size_kb = os.path.getsize(cal_path) // 1024
 print(f"\nCalibration figure exists: {cal_path} ({size_kb} KB)")

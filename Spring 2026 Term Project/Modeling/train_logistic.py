@@ -16,7 +16,7 @@ train_df = df[df["season"] <= 2022].reset_index(drop=True)
 test_df = df[df["season"] >= 2023].reset_index(drop=True)
 
 X_train, y_train = train_df[feat_cols].values, train_df["label"].values
-X_test,  y_test = test_df[feat_cols].values,  test_df["label"].values
+X_test, y_test = test_df[feat_cols].values,  test_df["label"].values
 groups = train_df["season"].values
 
 gkf = GroupKFold(n_splits=5)
@@ -31,16 +31,16 @@ print(f"\nBest C: {gs.best_params_['lr__C']}  |  CV log-loss: {-gs.best_score_:.
 
 y_pred = gs.predict(X_test)
 y_prob = gs.predict_proba(X_test)[:, 1]
-print("\n=== Logistic Regression (CV-tuned) ===")
+print("\n Logistic Regression (CV-tuned)")
 print(f"Accuracy : {accuracy_score(y_test, y_pred):.4f}")
 print(f"Log Loss : {log_loss(y_test, y_prob):.4f}")
-print(f"ROC-AUC  : {roc_auc_score(y_test, y_prob):.4f}")
+print(f"ROC-AUC : {roc_auc_score(y_test, y_prob):.4f}")
 print("\nConfusion matrix (rows=actual, cols=predicted):")
 print(confusion_matrix(y_test, y_pred))
 best_lr = gs.best_estimator_.named_steps["lr"]
 print("\nCoefficients (standardized):")
 for col, coef in zip(feat_cols, best_lr.coef_[0]):
-    print(f"  {col:35s} {coef:+.4f}")
+    print(f"{col:35s} {coef:+.4f}")
 
 preds = test_df[["season", "round"]].copy()
 preds["y_true"] = y_test

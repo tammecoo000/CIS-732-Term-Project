@@ -6,7 +6,7 @@ warnings.filterwarnings("ignore", category=pd.errors.ParserWarning)
 
 project_base_path = "/Users/coopertammen/Desktop/CIS732/Spring 2026 Term Project"
 
-# ── Load BartTorvik data (same as Step 1) 
+# Load BartTorvik data (same as Step 1) 
 barttorvik_folders = [
     "Data/2008-2014 Team Results",
     "Data/2015-2019 Team Results",
@@ -83,7 +83,7 @@ final_unmatched = barttorvik_all_seasons["team_id"].isna().sum()
 print(f"\nAfter manual corrections — still unmatched: {final_unmatched}")
 
 
-# ── Keep only needed columns 
+# Keep only needed columns 
 barttorvik_stats = barttorvik_all_seasons[["season", "team", "team_id", "adjoe", "adjde", "sos"]].copy()
 print("\nFinal barttorvik_stats shape:", barttorvik_stats.shape)
 print("\nSample:")

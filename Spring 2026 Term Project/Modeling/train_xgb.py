@@ -24,9 +24,9 @@ cv_splits = list(GroupKFold(n_splits=5).split(X_train, y_train, groups=seasons))
 
 param_grid = {
     "n_estimators": [100, 300],
-    "max_depth":    [3, 5],
-    "learning_rate":[0.05, 0.1, 0.3],
-    "subsample":    [0.8, 1.0],
+    "max_depth": [3, 5],
+    "learning_rate": [0.05, 0.1, 0.3],
+    "subsample": [0.8, 1.0],
 }
 gs = GridSearchCV(
     XGBClassifier(random_state=42, eval_metric="logloss", verbosity=0),
@@ -43,10 +43,10 @@ print(f"\nBest params: {gs.best_params_}  |  CV log-loss: {-gs.best_score_:.4f}"
 y_pred = gs.predict(X_test)
 y_prob = gs.predict_proba(X_test)[:, 1]
 
-print("\n=== XGBoost (CV-tuned) ===")
+print("\n XGBoost (CV-tuned)")
 print(f"Accuracy : {accuracy_score(y_test, y_pred):.4f}")
 print(f"Log Loss : {log_loss(y_test, y_prob):.4f}")
-print(f"ROC-AUC  : {roc_auc_score(y_test, y_prob):.4f}")
+print(f"ROC-AUC : {roc_auc_score(y_test, y_prob):.4f}")
 print("\nConfusion matrix (rows=actual, cols=predicted):")
 print(confusion_matrix(y_test, y_pred))
 
